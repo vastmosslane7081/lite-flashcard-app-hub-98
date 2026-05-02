@@ -1,10 +1,33 @@
 """
 Flashcard App - Main module.
 """
+import sys
+
+VERSION = "0.2.0"
+
+def run(args):
+    """Main entry point."""
+    print(f"Flashcard App v{VERSION}")
+    if args:
+        print(f"Processing: {', '.join(args)}")
+        process(args)
+    else:
+        print("Usage: python flashcard.py [arguments]")
+        print("Try: python flashcard.py --help")
+
+def process(args):
+    """Process input arguments."""
+    records = []
+    for arg in args:
+        result = arg.strip()
+        if result:
+            records.append(result)
+            print(f"  Processed: {result}")
+    print(f"\nTotal: {len(records)} items processed")
+    return records
 
 def main():
-    print("Flashcard App is running...")
-    print("Version 0.1.0")
+    run(sys.argv[1:])
 
 if __name__ == "__main__":
     main()
